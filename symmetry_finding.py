@@ -49,8 +49,8 @@ def get_sph_and_norm_clusters(coords, r_cutoff, n_clusters_sph=20, n_clusters_no
     if round_norm:
         local_cutoff_norms = np.round(local_cutoff_norms, round_norm)
     
-    kmeans_norm = KMeans(n_clusters=10, random_state=0).fit(local_cutoff_norms)
-    kmeans_sph = KMeans(n_clusters=20, random_state=0).fit(ylms_cutoff.T)
+    kmeans_norm = KMeans(n_clusters=n_clusters_norm, random_state=0).fit(local_cutoff_norms)
+    kmeans_sph = KMeans(n_clusters=n_clusters_sph, random_state=0).fit(ylms_cutoff.T)
 
     norms_colors = kmeans_norm.fit_predict(local_cutoff_norms)
     sph_colors = kmeans_sph.fit_predict(ylms_cutoff.T)
